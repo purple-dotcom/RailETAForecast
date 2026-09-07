@@ -1,0 +1,11 @@
+{
+  "_meta": {
+    "purpose": "Real published figures used to sanity-check the generator's aggregate output. We only calibrate against numbers that were actually found in search results -- we do NOT fabricate a precise cause-level percentage breakdown, because no official one at that granularity was found publicly.",
+    "on_time_definition_used": "delay_min <= 15 at final destination station, matching the threshold used in the cited Lok Sabha answer"
+  },
+  "overall_on_time_pct_range": [0.70, 0.80],
+  "source_note_overall": "Railways Minister stated overall punctuality of 77% in a March 2026 Rajya Sabha reply; a separate Lok Sabha answer noted ~23% of Broad Gauge Mail/Express trains delayed more than 15 minutes (~77% on-time by that specific threshold). These are from different years/measurement contexts, which is exactly why we calibrate to a RANGE (70-80%) rather than pretending to hit one precise number.",
+  "division_level_spread_pct_range": [0.80, 0.99],
+  "source_note_division": "Per the same March 2026 statement, 49 of 68 divisions exceeded 80% punctuality while 12 divisions reached 95%+; this justifies the wide division-to-division variance our route-type-based parameters should produce, not a single global accuracy number.",
+  "cause_breakdown": "NOT calibrated at cause-percentage level -- no official public breakdown at that granularity was found. The cause weights in simulator.py are illustrative only and should be labeled as such in any pitch deck."
+}

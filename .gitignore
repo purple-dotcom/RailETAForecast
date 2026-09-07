@@ -1,0 +1,4 @@
+venv/
+.env
+BUILD_LOG.md
+*/__pycache__/

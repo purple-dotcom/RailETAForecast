@@ -1,0 +1,41 @@
+{
+  "_meta": {
+    "purpose": "Hand-curated, one-time annotation of network structure needed by the propagation module and the event injector. Not scraped -- there is no clean public dataset for this, so it was assembled from general, well-documented facts about these specific real routes.",
+    "sources": [
+      "Konkan Railway is publicly documented as a largely single-line route with passing loops, and publishes an official monsoon timetable each year with speed restrictions -- this is why the Mandovi Express sections below are marked single_line + high monsoon risk.",
+      "Northern plains routes (Delhi-Ambala-Ludhiana-Amritsar corridor) are widely documented as the most fog-affected stretch of Indian Railways in winter (Dec-Jan) -- this is why the Shatabdi sections below carry winter_fog risk.",
+      "Crew/loco changeover points are illustrative assumptions for demo purposes (marked accordingly), not verified against a live crew-roster system."
+    ]
+  },
+  "sections": [
+    {"train_no": "12301", "from": "HWH", "to": "ASN", "single_line": false, "crew_changeover": false},
+    {"train_no": "12301", "from": "ASN", "to": "DHN", "single_line": false, "crew_changeover": false},
+    {"train_no": "12301", "from": "DHN", "to": "GAYA","single_line": false, "crew_changeover": false},
+    {"train_no": "12301", "from": "GAYA","to": "DDU", "single_line": false, "crew_changeover": true, "note": "illustrative crew/loco changeover assumption"},
+    {"train_no": "12301", "from": "DDU", "to": "CNB", "single_line": false, "crew_changeover": false},
+    {"train_no": "12301", "from": "CNB", "to": "NDLS","single_line": false, "crew_changeover": false},
+
+    {"train_no": "12951", "from": "BCT", "to": "BRC", "single_line": false, "crew_changeover": false},
+    {"train_no": "12951", "from": "BRC", "to": "RTM", "single_line": false, "crew_changeover": false},
+    {"train_no": "12951", "from": "RTM", "to": "KOTA","single_line": false, "crew_changeover": true, "note": "illustrative crew/loco changeover assumption"},
+    {"train_no": "12951", "from": "KOTA","to": "NDLS","single_line": false, "crew_changeover": false},
+
+    {"train_no": "10103", "from": "CSMT","to": "PNVL","single_line": false, "crew_changeover": false},
+    {"train_no": "10103", "from": "PNVL","to": "ROHA","single_line": true,  "crew_changeover": false, "monsoon_risk": "medium"},
+    {"train_no": "10103", "from": "ROHA","to": "RN",  "single_line": true,  "crew_changeover": false, "monsoon_risk": "high"},
+    {"train_no": "10103", "from": "RN",  "to": "MAO", "single_line": true,  "crew_changeover": false, "monsoon_risk": "high"},
+
+    {"train_no": "12013", "from": "NDLS","to": "UMB", "single_line": false, "crew_changeover": false, "fog_risk": "high"},
+    {"train_no": "12013", "from": "UMB", "to": "LDH", "single_line": false, "crew_changeover": false, "fog_risk": "high"},
+    {"train_no": "12013", "from": "LDH", "to": "JUC", "single_line": false, "crew_changeover": false, "fog_risk": "medium"},
+    {"train_no": "12013", "from": "JUC", "to": "ASR", "single_line": false, "crew_changeover": false, "fog_risk": "medium"}
+  ],
+  "connecting_trains": [
+    {
+      "hub_station": "NDLS",
+      "arriving_train": "12301",
+      "connection": "12013",
+      "note": "Illustrative: if 12301 arrives badly late into NDLS, a same-day onward Shatabdi (12013) sharing crew/platform resources at NDLS is used to demo downstream propagation."
+    }
+  ]
+}
