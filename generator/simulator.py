@@ -1,13 +1,10 @@
 """
 Layered historical-outcome simulator.
 
-Generates plausible "what actually happened" records on top of a real
-schedule skeleton (seed_trains.json) and real network annotations
-(network_attributes.json). This does NOT try to be a physically exact
-simulation of railway operations -- it exists to produce a training set
-whose AGGREGATE statistics (on-time %, cause mix) resemble real published
-numbers, so the downstream ML model has something realistic to learn a
-correction on top of.
+Generates plausible "what actually happened" records on top of a real schedule skeleton (seed_trains.json) and 
+real network annotations (network_attributes.json). This does NOT try to be a physically exact simulation of railway 
+operations -- it exists to produce a training set whose AGGREGATE statistics (on-time %, cause mix) resemble real 
+published numbers, so the downstream ML model has something realistic to learn a correction on top of.
 
 Layers, applied per section (station i -> station i+1) in order:
   1. base runtime sampler   -- natural variability around scheduled duration
@@ -15,9 +12,8 @@ Layers, applied per section (station i -> station i+1) in order:
   3. recovery               -- schedule padding claws back some of the backlog
   4. propagation            -- connecting trains inherit upstream lateness
 
-A `season` parameter (normal / winter_fog / monsoon / festival_surge) shifts
-event probabilities and durations, so a periodic-retraining loop has a real
-distribution shift to adapt to in the demo.
+A `season` parameter (normal / winter_fog / monsoon / festival_surge) shifts event probabilities and durations, so a 
+periodic-retraining loop has a real distribution shift to adapt to in the demo.
 """
 
 import random

@@ -66,7 +66,6 @@ STATION_COORDS = {
 
 
 if __name__ == "__main__":
-    # Smoke test -- will only work with real network access.
     lat, lon = STATION_COORDS["NDLS"]
     print("Fetching live weather for New Delhi...")
     print(get_live_weather(lat, lon))

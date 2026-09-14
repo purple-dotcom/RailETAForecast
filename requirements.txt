@@ -1,0 +1,4 @@
+ntes-client
+requests
+lightgbm
+numpy

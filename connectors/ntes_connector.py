@@ -23,6 +23,7 @@ are available if you want PNR/search features later.
 """
 
 from ntes import NTESClient
+import os
 
 _client = NTESClient()
 
@@ -45,17 +46,13 @@ def get_station_live(station_code: str, hours: int = 4):
 
 
 if __name__ == "__main__":
-    live = get_station_live('LNL')
-    trains = live['TrainsAtStation']
-    for train in trains:
-        print(train['TrainType'] + '|' + train['TrainTypeDesc'])
+    # code added by me just for testing
+    schedule_hwh = get_schedule('12301', "07-Sep-2026")
+    schedule_mum_raj = get_schedule('12951', "07-Sep-2026")
+    schedule_man_ex = get_schedule('10103', "07-Sep-2026")
+    schedule_am_jsh = get_schedule('12301', "07-Sep-2026")
 
-    live = get_station_live('SVJR')
-    trains = live['TrainsAtStation']
-    for train in trains:
-        print(train['TrainType'] + '|' + train['TrainTypeDesc'])
-
-    live = get_station_live('PAV')
-    trains = live['TrainsAtStation']
-    for train in trains:
-        print(train['TrainType'] + '|' + train['TrainTypeDesc'])
+    print(schedule_hwh)
+    print(schedule_man_ex)
+    print(schedule_mum_raj)
+    print(schedule_am_jsh)

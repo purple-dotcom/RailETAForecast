@@ -1,0 +1,12 @@
+{
+  "_meta": "FABRICATED FIXTURE for testing refresh_seed_from_ntes.py's parsing logic only. This is NOT a real captured NTES response -- the actual field names are unverified (see BUILD_LOG.md). Structure is a reasonable guess based on common patterns in similar reverse-engineered Indian Railways clients, but MUST be checked against a real response before trusting KEY_MAP in the script.",
+  "trainSchedule": [
+    {"stationCode": "HWH", "stationName": "Howrah Jn", "distance": "0",   "arrivalTime": "--",   "departureTime": "16:50", "dayCount": "1"},
+    {"stationCode": "ASN", "stationName": "Asansol Jn", "distance": "200", "arrivalTime": "19:04", "departureTime": "19:09", "dayCount": "1"},
+    {"stationCode": "DHN", "stationName": "Dhanbad Jn", "distance": "261", "arrivalTime": "20:02", "departureTime": "20:07", "dayCount": "1"},
+    {"stationCode": "GAYA","stationName": "Gaya Jn",    "distance": "447", "arrivalTime": "22:20", "departureTime": "22:25", "dayCount": "1"},
+    {"stationCode": "DDU", "stationName": "Pt Deen Dayal Upadhyaya Jn", "distance": "587", "arrivalTime": "00:10", "departureTime": "00:20", "dayCount": "2"},
+    {"stationCode": "CNB", "stationName": "Kanpur Central", "distance": "999", "arrivalTime": "04:30", "departureTime": "04:35", "dayCount": "2"},
+    {"stationCode": "NDLS","stationName": "New Delhi", "distance": "1447", "arrivalTime": "09:55", "departureTime": "--", "dayCount": "2"}
+  ]
+}
