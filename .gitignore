@@ -3,3 +3,4 @@ venv/
 BUILD_LOG.md
 */__pycache__/
 refresh.py
+SCHEMA.md
