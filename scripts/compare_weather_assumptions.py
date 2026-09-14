@@ -55,7 +55,7 @@ def fetch_weather(station: str, start: str, end: str, demo: bool):
         path = os.path.join(FIXTURES_DIR, "open_meteo_fixture_monsoon_week.json")
         with open(path) as f:
             return json.load(f)
-    from weather_connector import get_historical_weather, STATION_COORDS
+    from connectors.weather_connector import get_historical_weather, STATION_COORDS
     if station not in STATION_COORDS:
         raise ValueError(f"No coordinates for station {station} in weather_connector.STATION_COORDS")
     lat, lon = STATION_COORDS[station]
@@ -80,7 +80,7 @@ def summarize(raw: dict):
 
 
 def advisory_report(summary: dict):
-    from simulator import SEASON_EFFECTS
+    from generator.simulator import SEASON_EFFECTS
 
     print("\n=== Real weather summary ===")
     print(f"  Avg precipitation: {summary['avg_precip_mm']:.1f} mm/hr")

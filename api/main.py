@@ -30,7 +30,7 @@ sys.path.insert(0, APP_DIR)
 sys.path.insert(0, HERE)
 
 from app.baseline import compute_baseline, _hhmm_to_minutes, _minutes_to_hhmm
-from features import build_feature_rows, FEATURE_NAMES
+from app.features import build_feature_rows, FEATURE_NAMES
 from app.uncertainty import widen_band
 from app.rootcause import RootCauseExplainer
 from app.propagation import check_hub_connections, check_crew_changeover, check_single_line_conflicts

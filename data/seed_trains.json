@@ -14,10 +14,10 @@
         {"code": "HWH", "name": "Howrah Jn", "km": 0,    "sched_arr": null,  "sched_dep": "16:50"},
         {"code": "ASN", "name": "Asansol Jn", "km": 200,  "sched_arr": "19:03", "sched_dep": "19:08"},
         {"code": "DHN", "name": "Dhanbad Jn", "km": 261,  "sched_arr": "20:03", "sched_dep": "20:08"},
-        {"code": "GAYA","name": "Gaya Jn", "km": 447,  "sched_arr": "22:23", "sched_dep": "22:28"},
+        {"code": "GAYA","name": "Gaya Jn",    "km": 447,  "sched_arr": "22:23", "sched_dep": "22:28"},
         {"code": "DDU", "name": "Pt Deen Dayal Upadhyaya Jn (Mughalsarai)", "km": 587, "sched_arr": "00:08", "sched_dep": "00:18"},
         {"code": "CNB", "name": "Kanpur Central", "km": 999, "sched_arr": "04:33", "sched_dep": "04:38"},
-        {"code": "NDLS","name": "New Delhi", "km": 1447, "sched_arr": "10:00", "sched_dep": null}
+        {"code": "NDLS","name": "New Delhi",   "km": 1447, "sched_arr": "10:00", "sched_dep": null}
       ]
     },
     {
@@ -27,10 +27,10 @@
       "seasonal_risk": "none_notable",
       "stations": [
         {"code": "BCT", "name": "Mumbai Central", "km": 0,    "sched_arr": null,  "sched_dep": "17:00"},
-        {"code": "BRC", "name": "Vadodara Jn", "km": 392,  "sched_arr": "21:24", "sched_dep": "21:29"},
-        {"code": "RTM", "name": "Ratlam Jn", "km": 596,  "sched_arr": "23:38", "sched_dep": "23:40"},
-        {"code": "KOTA","name": "Kota Jn", "km": 826,  "sched_arr": "02:00", "sched_dep": "02:05"},
-        {"code": "NDLS","name": "New Delhi", "km": 1386, "sched_arr": "08:35", "sched_dep": null}
+        {"code": "BRC", "name": "Vadodara Jn",     "km": 392,  "sched_arr": "21:24", "sched_dep": "21:29"},
+        {"code": "RTM", "name": "Ratlam Jn",       "km": 596,  "sched_arr": "23:38", "sched_dep": "23:40"},
+        {"code": "KOTA","name": "Kota Jn",         "km": 826,  "sched_arr": "02:00", "sched_dep": "02:05"},
+        {"code": "NDLS","name": "New Delhi",       "km": 1386, "sched_arr": "08:35", "sched_dep": null}
       ]
     },
     {
@@ -40,10 +40,24 @@
       "seasonal_risk": "monsoon",
       "stations": [
         {"code": "CSMT","name": "Mumbai CSMT",  "km": 0,   "sched_arr": null,  "sched_dep": "07:10"},
-        {"code": "PNVL","name": "Panvel", "km": 51,  "sched_arr": "08:12", "sched_dep": "08:15"},
+        {"code": "PNVL","name": "Panvel",       "km": 51,  "sched_arr": "08:12", "sched_dep": "08:15"},
         {"code": "ROHA","name": "Roha",         "km": 121, "sched_arr": "09:23", "sched_dep": "09:25"},
         {"code": "RN",  "name": "Ratnagiri",    "km": 331, "sched_arr": "13:05", "sched_dep": "13:10"},
         {"code": "MAO", "name": "Madgaon Jn",   "km": 581, "sched_arr": "18:10", "sched_dep": null}
+      ]
+    },
+    {
+      "train_no": "10104",
+      "name": "Mandovi Express (return working)",
+      "route_type": "single_line_coastal",
+      "seasonal_risk": "monsoon",
+      "_note": "Real return working of the 10103 train pair -- same physical Konkan Railway single-line track, opposite direction. Added specifically to give the propagation module a real opposing train to model block conflicts against (see BUILD_LOG.md). Running times per section are mirrored from 10103's (261/68/220/300 min for PNVL-CSMT/ROHA-PNVL/RN-ROHA/MAO-RN respectively) as a defensible same-track assumption; exact real times need a live refresh like the rest of this file.",
+      "stations": [
+        {"code": "MAO", "name": "Madgaon Jn",   "km": 0,   "sched_arr": null,  "sched_dep": "08:00"},
+        {"code": "RN",  "name": "Ratnagiri",    "km": 250, "sched_arr": "13:00", "sched_dep": "13:15"},
+        {"code": "ROHA","name": "Roha",         "km": 460, "sched_arr": "16:55", "sched_dep": "17:00"},
+        {"code": "PNVL","name": "Panvel",       "km": 530, "sched_arr": "18:08", "sched_dep": "18:11"},
+        {"code": "CSMT","name": "Mumbai CSMT",  "km": 581, "sched_arr": "19:13", "sched_dep": null}
       ]
     },
     {
