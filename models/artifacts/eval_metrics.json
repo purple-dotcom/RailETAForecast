@@ -1,0 +1,39 @@
+{
+  "baseline_mae": 5.276123366013072,
+  "model_mae": 5.106369845242336,
+  "improvement_pct": 3.217391046316869,
+  "coverage_80": 0.7881944444444444,
+  "above_p90_frac": 0.1119281045751634,
+  "below_p10_frac": 0.09987745098039216,
+  "n_test_rows": 4896,
+  "season_breakdown": [
+    {
+      "season": "festival_surge",
+      "n": 612,
+      "baseline_mae": 5.85,
+      "model_mae": 5.79,
+      "improvement_pct": 1.0
+    },
+    {
+      "season": "monsoon",
+      "n": 1224,
+      "baseline_mae": 5.79,
+      "model_mae": 5.58,
+      "improvement_pct": 3.7
+    },
+    {
+      "season": "normal",
+      "n": 2040,
+      "baseline_mae": 4.57,
+      "model_mae": 4.52,
+      "improvement_pct": 1.1
+    },
+    {
+      "season": "winter_fog",
+      "n": 1020,
+      "baseline_mae": 5.73,
+      "model_mae": 5.31,
+      "improvement_pct": 7.3
+    }
+  ]
+}

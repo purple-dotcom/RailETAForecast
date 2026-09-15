@@ -1,0 +1,411 @@
+/* ===========================================================================
+   Design tokens -- see BUILD_LOG.md Step 17 for the full rationale.
+   Amber is reserved for numeric/identity content (times, delays, train
+   numbers) -- a deliberate departure-board reference, not a decorative
+   accent. Green/red are reserved strictly for on-time/critical semantics.
+   =========================================================================== */
+:root {
+  --ink: #0B0F14;
+  --panel: #131920;
+  --panel-raised: #1A222C;
+  --border: #232B36;
+  --amber: #FFB020;
+  --amber-dim: #8A6423;
+  --signal-green: #4FAE6D;
+  --signal-red: #E5484D;
+  --text: #E7ECF2;
+  --text-muted: #7C8797;
+  --text-faint: #4E5866;
+
+  --font-mono: 'IBM Plex Mono', 'SF Mono', Consolas, monospace;
+  --font-sans: 'IBM Plex Sans', -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--ink);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+}
+
+#root { height: 100vh; display: flex; }
+
+/* ---------------------------------------------------------------------- */
+/* Layout: left icon+label rail, dense content area                       */
+/* ---------------------------------------------------------------------- */
+
+.rail {
+  width: 168px;
+  flex-shrink: 0;
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+}
+
+.rail-brand {
+  padding: 0 20px 20px 20px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+}
+
+.rail-brand strong { color: var(--amber); font-weight: 600; }
+
+.rail-tab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 20px;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  font-size: 13.5px;
+}
+
+.rail-tab:hover { color: var(--text); background: var(--panel-raised); }
+
+.rail-tab.active {
+  color: var(--text);
+  border-left-color: var(--amber);
+  background: var(--panel-raised);
+}
+
+.rail-tab .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--signal-green);
+  flex-shrink: 0;
+}
+
+.rail-footer {
+  margin-top: auto;
+  padding: 12px 20px 0 20px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-faint);
+  border-top: 1px solid var(--border);
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 28px 36px;
+}
+
+h1 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin: 0 0 24px 0;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Panels -- flat, hairline border, no shadow, minimal radius             */
+/* ---------------------------------------------------------------------- */
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+  overflow-x: auto;
+}
+
+.panel-title {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0 0 12px 0;
+  font-weight: 500;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Fleet board -- departure-board treatment                               */
+/* ---------------------------------------------------------------------- */
+
+.board {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.board th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-faint);
+  padding: 0 12px 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.board td {
+  padding: 13px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+.board tr:last-child td { border-bottom: none; }
+.board tr.clickable { cursor: pointer; }
+.board tr.clickable:hover { background: var(--panel-raised); }
+
+.mono { font-family: var(--font-mono); }
+
+.train-no {
+  font-family: var(--font-mono);
+  color: var(--amber);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.delay-figure {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 500;
+  transition: opacity 0.15s;
+}
+
+.delay-figure.flip { animation: flip-cycle 0.4s ease; }
+
+@keyframes flip-cycle {
+  0% { opacity: 1; transform: scaleY(1); }
+  45% { opacity: 0.2; transform: scaleY(0.15); }
+  55% { opacity: 0.2; transform: scaleY(0.15); }
+  100% { opacity: 1; transform: scaleY(1); }
+}
+
+.status-ontime { color: var(--signal-green); }
+.status-watch { color: var(--amber); }
+.status-critical { color: var(--signal-red); }
+
+.badge {
+  display: inline-block;
+  font-size: 10.5px;
+  font-family: var(--font-mono);
+  padding: 2px 7px;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  margin-right: 4px;
+  white-space: nowrap;
+}
+
+.badge.tag-weather { border-color: #3B5A8A; color: #7FA6E0; }
+.badge.tag-congestion_preceding_train { border-color: var(--amber-dim); color: var(--amber); }
+
+/* ---------------------------------------------------------------------- */
+/* Train detail: horizontal timeline with confidence band                 */
+/* ---------------------------------------------------------------------- */
+
+.timeline {
+  display: flex;
+  align-items: flex-end;
+  gap: 0;
+  padding: 40px 8px 8px 8px;
+  overflow-x: auto;
+}
+
+.tl-station {
+  flex: 1;
+  min-width: 150px;
+  position: relative;
+  padding: 0 10px;
+  border-left: 1px dashed var(--border);
+}
+
+.tl-station:first-child { border-left: none; }
+
+.tl-band {
+  height: 6px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  position: relative;
+  background: linear-gradient(90deg, transparent, var(--amber-dim) 20%, var(--amber-dim) 80%, transparent);
+}
+
+.tl-code { font-family: var(--font-mono); font-size: 13px; color: var(--text); font-weight: 500; }
+.tl-name { font-size: 11px; color: var(--text-muted); margin-bottom: 8px; }
+.tl-delay { font-family: var(--font-mono); font-size: 18px; margin: 6px 0; }
+.tl-band-range { font-family: var(--font-mono); font-size: 10.5px; color: var(--text-faint); }
+.tl-note { font-size: 10.5px; color: var(--text-faint); margin-top: 4px; font-style: italic; }
+
+.reasons-list { margin-top: 8px; font-size: 11px; }
+.reason-row { display: flex; justify-content: space-between; color: var(--text-muted); padding: 2px 0; }
+.reason-impact { font-family: var(--font-mono); }
+.reason-impact.pos { color: var(--signal-red); }
+.reason-impact.neg { color: var(--signal-green); }
+
+/* ---------------------------------------------------------------------- */
+/* Propagation notes                                                      */
+/* ---------------------------------------------------------------------- */
+
+.notice {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--amber);
+  border-radius: 2px;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  background: var(--panel-raised);
+}
+
+.notice.critical { border-left-color: var(--signal-red); }
+.notice-type { font-family: var(--font-mono); font-size: 10.5px; color: var(--text-faint); margin-bottom: 3px; }
+
+/* ---------------------------------------------------------------------- */
+/* Controls (scenario simulator)                                          */
+/* ---------------------------------------------------------------------- */
+
+.controls-row { display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; }
+
+label { display: block; font-size: 11px; color: var(--text-muted); margin-bottom: 5px; }
+
+select, input[type="number"], input[type="date"] {
+  background: var(--ink);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 7px 10px;
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+button {
+  background: var(--amber);
+  color: var(--ink);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 2px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+button:hover { opacity: 0.9; }
+button:disabled { opacity: 0.4; cursor: default; }
+
+button.ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Network graph                                                          */
+/* ---------------------------------------------------------------------- */
+
+.network-svg { width: 100%; height: auto; }
+.net-station-dot { fill: var(--panel-raised); stroke: var(--text-muted); stroke-width: 1.5; }
+.net-station-label { fill: var(--text-muted); font-family: var(--font-mono); font-size: 10px; }
+.net-edge { stroke: var(--border); stroke-width: 2; }
+.net-edge.single-line { stroke: var(--amber-dim); stroke-dasharray: 5 3; }
+.net-edge.crew { stroke: var(--signal-red); stroke-width: 3; }
+
+/* ---------------------------------------------------------------------- */
+/* Live feed                                                              */
+/* ---------------------------------------------------------------------- */
+
+.feed-row {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 14px;
+}
+
+.feed-time { color: var(--text-faint); flex-shrink: 0; }
+.feed-empty { color: var(--text-faint); font-style: italic; padding: 20px 0; text-align: center; }
+
+/* ---------------------------------------------------------------------- */
+/* Trust panel table                                                      */
+/* ---------------------------------------------------------------------- */
+
+.stat-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.stat-row:last-child { border-bottom: none; }
+.stat-label { color: var(--text-muted); font-size: 13px; }
+.stat-value { font-family: var(--font-mono); font-size: 15px; }
+.stat-value.good { color: var(--signal-green); }
+
+.season-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.season-table th { text-align: left; font-size: 11px; color: var(--text-faint); padding: 6px 10px; border-bottom: 1px solid var(--border); }
+.season-table td { padding: 8px 10px; font-family: var(--font-mono); font-size: 12.5px; border-bottom: 1px solid var(--border); }
+
+.empty-state {
+  color: var(--text-faint);
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 13px;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Accessibility: a clearly visible focus indicator (the previous browser */
+/* default computed to near-black on this dark palette -- effectively     */
+/* invisible, confirmed by testing actual keyboard tab-through, not just  */
+/* assumed from the absence of an `outline: none` override) and respect   */
+/* for prefers-reduced-motion on the one deliberate animation in the app. */
+/* :focus-visible (not :focus) so this only shows for keyboard/programmatic*/
+/* focus, not every mouse click.                                          */
+/* ---------------------------------------------------------------------- */
+
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .delay-figure.flip { animation: none; }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Responsive: this is a control-room tool, desktop-first by design (see  */
+/* BUILD_LOG.md), so this is a baseline "doesn't break" floor rather than */
+/* a full mobile redesign -- the left rail becomes a horizontal scrolling */
+/* strip and content padding tightens up. Tables already get overflow-x   */
+/* from .panel above, so they scroll within their own bounds instead of   */
+/* blowing out the page.                                                  */
+/* ---------------------------------------------------------------------- */
+
+@media (max-width: 700px) {
+  #root { flex-direction: column; height: auto; min-height: 100vh; }
+
+  .rail {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 12px;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+  }
+
+  .rail-brand, .rail-footer { display: none; }
+
+  .rail-tab {
+    padding: 8px 12px;
+    border-left: none;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .rail-tab.active { border-left-color: transparent; border-bottom-color: var(--amber); }
+  .rail-tab:hover { background: transparent; }
+
+  .content { padding: 18px 16px; }
+
+  .controls-row { gap: 10px; }
+  .timeline { padding: 32px 4px 4px 4px; }
+}
