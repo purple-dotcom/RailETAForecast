@@ -16,7 +16,7 @@ import lightgbm as lgb
 import numpy as np
 
 from build_training_table import build_train_test
-from features import FEATURE_NAMES
+from app.features import FEATURE_NAMES
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ARTIFACTS_DIR = os.path.join(HERE, "artifacts")
